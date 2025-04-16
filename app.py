@@ -14,7 +14,7 @@ labels = ['外向性', '計画性', '柔軟性', '論理的思考', '直感的�
           'ストレス耐性', '独立性', '協調性', '創造性', '感受性']
 
 DRIVE_FOLDER_ID = '1L-M95Ce-_4UYCdcmEAO1zNoX_BmUDcRb'
-SERVICE_ACCOUNT_FILE = 'neon-effect-456403-k6-2fbf3676c38a.json'
+SERVICE_ACCOUNT_FILE = 'neon-effect-456403-k6-0212a5fe0896.json'
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
 credentials = service_account.Credentials.from_service_account_file(
