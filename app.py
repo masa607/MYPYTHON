@@ -15,7 +15,7 @@ labels = ['外向性', '計画性', '柔軟性', '論理的思考', '直感的�
           'ストレス耐性', '独立性', '協調性', '創造性', '感受性']
 
 # Google DriveにアップロードするフォルダID（共有設定済み）
-DRIVE_FOLDER_ID = 'あなたのDriveフォルダID'
+DRIVE_FOLDER_ID = '1L-M95Ce-_4UYCdcmEAO1zNoX_BmUDcRb'
 
 # サービスアカウントキー（JSON）を使って認証
 SERVICE_ACCOUNT_FILE = 'service_account.json'
