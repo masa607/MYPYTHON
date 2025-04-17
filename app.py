@@ -1,28 +1,34 @@
 from flask import Flask, request, render_template
 import matplotlib.pyplot as plt
 import matplotlib
-import matplotlib.font_manager as fm  # ← 日本語フォント用
+import matplotlib.font_manager as fm
 import os
 import math
 import uuid
 
+app = Flask(__name__)
+
 # === 📌 日本語フォント設定 ===
-font_path = os.path.join('fonts', 'ipaexg.ttf')  # フォントファイルは fonts フォルダ内に配置
+font_path = os.path.join('fonts', 'ipaexg.ttf')  # 必ず fonts フォルダに配置すること
+font_prop = None
+
 if os.path.exists(font_path):
     font_prop = fm.FontProperties(fname=font_path)
     matplotlib.rcParams['font.family'] = font_prop.get_name()
-    print("[INFO] 日本語フォントを設定:", font_prop.get_name())
+    try:
+        fm._rebuild()  # キャッシュを再構築（非公式だが有効）
+        print("[INFO] 日本語フォントを設定:", font_prop.get_name())
+    except Exception as e:
+        print("[WARN] フォントキャッシュの再構築に失敗:", str(e))
 else:
-    print("⚠ 日本語フォントが見つかりません。文字化けの可能性あり。")
-
-app = Flask(__name__)
+    print("⚠ fonts/ipaexg.ttf が見つかりません。日本語が文字化けする可能性があります。")
 
 labels = ['外向性', '計画性', '柔軟性', '論理的思考', '直感的思考',
           'ストレス耐性', '独立性', '協調性', '創造性', '感受性']
 
 latest_image_filename = None  # 最新画像ファイル名を保存
 
-def create_radar_chart(scores, filename):
+def create_radar_chart(scores, filename, font_prop=None):
     print("[INFO] レーダーチャート作成中...")
     num_vars = len(labels)
     angles = [n / float(num_vars) * 2 * math.pi for n in range(num_vars)]
@@ -35,8 +41,13 @@ def create_radar_chart(scores, filename):
     ax.plot(angles, scores, marker='o')
     ax.fill(angles, scores, alpha=0.25)
     ax.set_xticks(angles[:-1])
-    ax.set_xticklabels(labels, fontsize=10)
     ax.set_yticklabels([])
+
+    if font_prop:
+        ax.set_xticklabels(labels, fontsize=10, fontproperties=font_prop)
+    else:
+        ax.set_xticklabels(labels, fontsize=10)
+
     plt.savefig(filename, bbox_inches='tight')
     plt.close()
     print("[INFO] レーダーチャート保存完了:", filename)
@@ -61,11 +72,11 @@ def update():
         scores = list(map(int, data[3:13]))
         print("[INFO] スコアデータ:", scores)
 
-        # 画像保存先（static/に保存）
+        # ファイル名をランダム生成（static/ フォルダに保存）
         filename = f"chart_{uuid.uuid4().hex[:8]}.png"
         chart_path = os.path.join('static', filename)
-        create_radar_chart(scores, filename=chart_path)
 
+        create_radar_chart(scores, filename=chart_path, font_prop=font_prop)
         latest_image_filename = filename
 
         return {"status": "success", "url": f"/static/{filename}"}
