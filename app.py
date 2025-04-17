@@ -1,8 +1,14 @@
 from flask import Flask, request, render_template
 import matplotlib.pyplot as plt
+import matplotlib
+import matplotlib.font_manager as fm  # ← 日本語フォント用
 import os
 import math
 import uuid
+
+# === 📌 日本語フォント設定 ===
+# 環境に応じて以下を変更：例：'IPAexGothic', 'Noto Sans CJK JP', 'MS Gothic', 'AppleGothic'など
+matplotlib.rcParams['font.family'] = 'IPAexGothic'
 
 app = Flask(__name__)
 
@@ -24,7 +30,7 @@ def create_radar_chart(scores, filename):
     ax.plot(angles, scores, marker='o')
     ax.fill(angles, scores, alpha=0.25)
     ax.set_xticks(angles[:-1])
-    ax.set_xticklabels(labels)
+    ax.set_xticklabels(labels, fontsize=10)
     ax.set_yticklabels([])
     plt.savefig(filename, bbox_inches='tight')
     plt.close()
@@ -63,4 +69,5 @@ def update():
     except Exception as e:
         print("[ERROR] update処理でエラー:", str(e))
         return {"error": str(e)}
+
 
