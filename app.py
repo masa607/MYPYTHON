@@ -5,11 +5,12 @@ import matplotlib.font_manager as fm
 import os
 import math
 import uuid
+import requests  # ← GASに送るために追加
 
 app = Flask(__name__)
 
 # === 📌 日本語フォント設定 ===
-font_path = os.path.join('fonts', 'ipaexg.ttf')  # 必ず fonts フォルダに配置すること
+font_path = os.path.join('fonts', 'ipaexg.ttf')
 font_prop = None
 
 if os.path.exists(font_path):
@@ -22,36 +23,28 @@ else:
 labels = ['外向性', '計画性', '柔軟性', '論理的思考', '直感的思考',
           'ストレス耐性', '独立性', '協調性', '創造性', '感受性']
 
-latest_image_filename = None  # 最新画像ファイル名を保存
+latest_image_filename = None
 
 def create_radar_chart(scores, filename, font_prop=None):
     print("[INFO] レーダーチャート作成中...")
     num_vars = len(labels)
     angles = [n / float(num_vars) * 2 * math.pi for n in range(num_vars)]
 
-    # スコアと角度を閉じるために最初の値を最後に追加
     scores += [scores[0]]
     angles += [angles[0]]
 
     plt.clf()
     fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
-
-    # レーダーチャート描画
     ax.plot(angles, scores, marker='o', color='blue', linewidth=2)
     ax.fill(angles, scores, alpha=0.25, color='skyblue')
-
-    # 軸のラベル設定
     ax.set_xticks(angles[:-1])
     if font_prop:
         ax.set_xticklabels(labels, fontsize=10, fontproperties=font_prop)
     else:
         ax.set_xticklabels(labels, fontsize=10)
-
-    # 5段階の目盛り設定
     ax.set_yticks([1, 2, 3, 4, 5])
     ax.set_yticklabels(['1', '2', '3', '4', '5'])
     ax.set_ylim(0, 5)
-
     plt.savefig(filename, bbox_inches='tight')
     plt.close()
     print("[INFO] レーダーチャート保存完了:", filename)
@@ -82,10 +75,27 @@ def update():
         create_radar_chart(scores, filename=chart_path, font_prop=font_prop)
         latest_image_filename = filename
 
+        # === 🔽 GASに画像URLをPOSTする ===
+        gas_webhook_url = "https://script.google.com/macros/s/AKfycbydUdatckkWzrsJDi3Eh_JkT9W4KQbENaJybxS4A5fJ2QcSrnaWLWE1me4_JaOsuj_0Uw/exec"
+
+        # Render上などでホスティングされている本番URLに置き換えてください
+        image_url = f"https://your-domain.com/static/{filename}"
+
+        payload = {
+            "image_url": image_url
+        }
+
+        try:
+            res = requests.post(gas_webhook_url, json=payload)
+            print("[INFO] GASへの送信結果:", res.text)
+        except Exception as e:
+            print("[ERROR] GAS送信失敗:", str(e))
+
         return {"status": "success", "url": f"/static/{filename}"}
     except Exception as e:
         print("[ERROR] update処理でエラー:", str(e))
         return {"error": str(e)}
+
 
 
 
