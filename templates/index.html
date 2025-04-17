@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>性格診断レーダーチャート</title>
+    <title>レーダーチャート</title>
 </head>
 <body>
-  <h1>診断結果</h1>
-  {% if image_url %}
-    <img src="{{ image_url }}" alt="レーダーチャート" style="max-width: 100%; height: auto;">
-  {% else %}
-    <p>まだ診断結果がありません。</p>
-  {% endif %}
+    <h1>レーダーチャート結果</h1>
+    {% if image_url %}
+        <img src="{{ image_url }}" alt="Radar Chart">
+    {% else %}
+        <p>まだ画像はありません。</p>
+    {% endif %}
 </body>
 </html>
