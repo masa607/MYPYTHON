@@ -29,20 +29,28 @@ def create_radar_chart(scores, filename, font_prop=None):
     num_vars = len(labels)
     angles = [n / float(num_vars) * 2 * math.pi for n in range(num_vars)]
 
+    # スコアと角度を閉じるために最初の値を最後に追加
     scores += [scores[0]]
     angles += [angles[0]]
 
     plt.clf()
     fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
-    ax.plot(angles, scores, marker='o')
-    ax.fill(angles, scores, alpha=0.25)
-    ax.set_xticks(angles[:-1])
-    ax.set_yticklabels([])
 
+    # レーダーチャート描画
+    ax.plot(angles, scores, marker='o', color='blue', linewidth=2)
+    ax.fill(angles, scores, alpha=0.25, color='skyblue')
+
+    # 軸のラベル設定
+    ax.set_xticks(angles[:-1])
     if font_prop:
         ax.set_xticklabels(labels, fontsize=10, fontproperties=font_prop)
     else:
         ax.set_xticklabels(labels, fontsize=10)
+
+    # 5段階の目盛り設定
+    ax.set_yticks([1, 2, 3, 4, 5])
+    ax.set_yticklabels(['1', '2', '3', '4', '5'])
+    ax.set_ylim(0, 5)
 
     plt.savefig(filename, bbox_inches='tight')
     plt.close()
@@ -68,7 +76,6 @@ def update():
         scores = list(map(int, data[3:13]))
         print("[INFO] スコアデータ:", scores)
 
-        # ファイル名をランダム生成（static/ フォルダに保存）
         filename = f"chart_{uuid.uuid4().hex[:8]}.png"
         chart_path = os.path.join('static', filename)
 
