@@ -1,0 +1,3 @@
+font_path = 'fonts/ipaexg.ttf'  # 相対パス
+font_prop = fm.FontProperties(fname=font_path)
+matplotlib.rcParams['font.family'] = font_prop.get_name()
