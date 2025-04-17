@@ -12,9 +12,10 @@
         }
         img {
             max-width: 100%;
+            margin-bottom: 30px;
         }
         h2 {
-            margin-top: 40px;
+            margin-top: 20px;
         }
         ul {
             list-style-type: none;
@@ -30,26 +31,28 @@
     </style>
 </head>
 <body>
-    <h1>レーダーチャート結果</h1>
+    <h1>性格診断結果</h1>
 
     {% if image_url %}
         <img src="{{ image_url }}" alt="Radar Chart">
+
+        <!-- グラフの下に説明を表示 -->
+        <h2>各項目の説明</h2>
+        <ul>
+            <li><strong>外向性:</strong> 人と関わることが好きで、社交的かどうかを示します。</li>
+            <li><strong>計画性:</strong> 物事を計画的に進める力。整理整頓や締め切りを守れるかどうか。</li>
+            <li><strong>柔軟性:</strong> 状況に応じて柔軟に対応できるか。新しいアイデアや変化に対する適応力。</li>
+            <li><strong>論理的思考:</strong> 論理に基づいて考える力。筋道立てて問題を解決できるか。</li>
+            <li><strong>直感的思考:</strong> 感覚や直感に頼って行動する傾向。ひらめきの力。</li>
+            <li><strong>ストレス耐性:</strong> 緊張や困難な状況でも落ち着いていられる力。</li>
+            <li><strong>独立性:</strong> 他人に頼らず、自分の判断で行動できる力。</li>
+            <li><strong>協調性:</strong> 他人と円滑にコミュニケーションを取り、協力できる力。</li>
+            <li><strong>創造性:</strong> 新しいアイデアを生み出す力。独自の発想ができるかどうか。</li>
+            <li><strong>感受性:</strong> 他人の気持ちや物事に敏感に反応する力。繊細さや共感力。</li>
+        </ul>
     {% else %}
         <p>画像を読み込み中です。右上のロードボタンをもう一度教えて下さい。</p>
     {% endif %}
-
-    <h2>各項目の説明</h2>
-    <ul>
-        <li><strong>外向性:</strong> 人と関わることが好きで、社交的かどうかを示します。</li>
-        <li><strong>計画性:</strong> 物事を計画的に進める力。整理整頓や締め切りを守れるかどうか。</li>
-        <li><strong>柔軟性:</strong> 状況に応じて柔軟に対応できるか。新しいアイデアや変化に対する適応力。</li>
-        <li><strong>論理的思考:</strong> 論理に基づいて考える力。筋道立てて問題を解決できるか。</li>
-        <li><strong>直感的思考:</strong> 感覚や直感に頼って行動する傾向。ひらめきの力。</li>
-        <li><strong>ストレス耐性:</strong> 緊張や困難な状況でも落ち着いていられる力。</li>
-        <li><strong>独立性:</strong> 他人に頼らず、自分の判断で行動できる力。</li>
-        <li><strong>協調性:</strong> 他人と円滑にコミュニケーションを取り、協力できる力。</li>
-        <li><strong>創造性:</strong> 新しいアイデアを生み出す力。独自の発想ができるかどうか。</li>
-        <li><strong>感受性:</strong> 他人の気持ちや物事に敏感に反応する力。繊細さや共感力。</li>
-    </ul>
 </body>
 </html>
+
