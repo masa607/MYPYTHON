@@ -8,7 +8,7 @@ import uuid
 
 # === 📌 日本語フォント設定 ===
 # 環境に応じて以下を変更：例：'IPAexGothic', 'Noto Sans CJK JP', 'MS Gothic', 'AppleGothic'など
-matplotlib.rcParams['font.family'] = 'Yu Gothic'
+matplotlib.rcParams['font.family'] = 'IPAexGothic'
 
 app = Flask(__name__)
 
