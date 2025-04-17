@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "neon-effect-456403-k6",
+  "private_key_id": "c941395a08b2920b3a8e11d3cef00f43cef44866",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC9Hlet+9V782UE\nfHVXukVs4X7bmut9ROzeZXtiaG1gPPYZOZIaEo3KieXyVQqDH/EMWhcRHdVTKvUA\nL/dGEeyp5hGIzHP075Yid1HfJ61aBJ19LZWrEnQGIYSog9VioQf4bXSPBJwdS3F+\nKSYH9zWmmjzzVnnJDKfAmrZf5JvzOXk+mKtncrLMbfQm5uXbeCjeBag0e9x2t9hM\nJMUalhg3yRZ1fexqrzur7MvuL2JRf1CbFe6VpsHrLe5bO6dG5JjVU1KMo7MkbsWX\nk45ugNycuVpIdY1eWp7WAlpWxzG+St9q+P/VOY55HSHXW1UPawCv80az7LEDb4mE\n8vDQJF4BAgMBAAECggEAR94lAcgG69Cl3duSGCGASo0y0S+BOByeSzGTfuUiU4U3\nHITlQaU1Xveie8HXedcEmmYOCAInVDCp5EVWGbmsDzCQD0Vq93SowDZJ1ZzVYrUI\nSE6vZtBfaQkJyaQ3zgBV8BFgTw04amWGHqRygGpwZ/yLFwoQw9dcVHQ2xCAzJ21T\nbYifkOMSlRdFXTtS368P78hykjdmWlOXtKc9zm7kweoJ8wySHmPiHiBYxg5y83Y+\nRy6+ei+XtMzfJwGxMVX6hGBpsIBb5MqyS8OVJQR2/3uSZKSbG3leQs7x7mRKSzgI\nwhXjCT32bJDK0ptvSDi7gsB7CCj783hhLjRjfM629QKBgQDoKLt90dgu3dpt1kPw\nMYgIU/UvS6Ak5ANw+mu9OXruJtD2yJkFq2zpusFRbqru6A25ndCGC75mhjlIdAfF\nCi63r754lalNR54BB9dHhB0If3jKrYiFzz34KFCcDpSPdj0UA+S26PZ9eXs2A4AI\nwSL1uVvWcetQ1k2wOYB/rGMuwwKBgQDQihv+DHwQX4DnlKAfG+HNT7THiZ+Bu/Hh\n37qBmNZNjTQ8sTdeWCj6G36GKSPhBLeaaGt5p3BMdxJa40cVPdbjFf0kYDGvVfK6\nm0pVpkuR4GTwmJ+W83tn/BSO/rCgqZQHbl7o2n1PnPjLu3OVX3Ujyt/zADrAlDUN\nviUta1C76wKBgQCnRdHxkeTlv8vGH//LbKTK+1NJxH+alP81w/kk2emM9kLRzS8U\nOrO6pGjtt4NJp8Fb4C2Cp6uES2mynoeKnQ+UIfhnAc5+c/+QVonyaWpR2Sa7QdWA\nNBY+Wy3Zg1ffFh5j8Xo1oB0ZwxHXlSYHKMF7sxZMqMAX+pD3TDcdxqOf6QKBgEdj\ncA+48GOeff9I9sOPhO4G4ikIqMz9rOEY+LzSuFIWC5LXS9AFOAnejaKZxMmMFtpJ\n8rjTo/LZNDRe53+TCtP0PBNOxtNyBcTx0jGd2vLWMVfXt5IyScWgGt2UvJxTUPR2\nSRFHcmxlnRoJUpkI843MLnv+UR6J3duVgx6YRSv/AoGBAKxPai76T3faQJ9pEfN+\nbtlY8nwu32d6hIjB/75+YliT3GsfGIj8e59L+sosCq0YNG3lQ1w/xrLarnMFNBU5\ntGcKtFqrS1AMFpge8ZNFy8QUiWJLME7bJFPkrUL446fx4Z3lYY5C5dyWNymqoP11\nMKC/Exm1oTWYVTV6w3d1JF2T\n-----END PRIVATE KEY-----\n",
+  "client_email": "drive-uploader@neon-effect-456403-k6.iam.gserviceaccount.com",
+  "client_id": "114655026657623297091",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/drive-uploader%40neon-effect-456403-k6.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
