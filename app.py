@@ -7,8 +7,13 @@ import math
 import uuid
 
 # === 📌 日本語フォント設定 ===
-# 環境に応じて以下を変更：例：'IPAexGothic', 'Noto Sans CJK JP', 'MS Gothic', 'AppleGothic'など
-matplotlib.rcParams['font.family'] = 'IPAexGothic'
+font_path = os.path.join('fonts', 'ipaexg.ttf')  # フォントファイルは fonts フォルダ内に配置
+if os.path.exists(font_path):
+    font_prop = fm.FontProperties(fname=font_path)
+    matplotlib.rcParams['font.family'] = font_prop.get_name()
+    print("[INFO] 日本語フォントを設定:", font_prop.get_name())
+else:
+    print("⚠ 日本語フォントが見つかりません。文字化けの可能性あり。")
 
 app = Flask(__name__)
 
@@ -36,13 +41,11 @@ def create_radar_chart(scores, filename):
     plt.close()
     print("[INFO] レーダーチャート保存完了:", filename)
 
-
 @app.route('/')
 def index():
     global latest_image_filename
     print("[INFO] indexアクセス - 最新画像ファイル名:", latest_image_filename)
     return render_template('index.html', image_url=f'/static/{latest_image_filename}' if latest_image_filename else '')
-
 
 @app.route('/update', methods=['POST'])
 def update():
@@ -69,5 +72,6 @@ def update():
     except Exception as e:
         print("[ERROR] update処理でエラー:", str(e))
         return {"error": str(e)}
+
 
 
