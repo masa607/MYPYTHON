@@ -15,11 +15,7 @@ font_prop = None
 if os.path.exists(font_path):
     font_prop = fm.FontProperties(fname=font_path)
     matplotlib.rcParams['font.family'] = font_prop.get_name()
-    try:
-        fm._rebuild()  # キャッシュを再構築（非公式だが有効）
-        print("[INFO] 日本語フォントを設定:", font_prop.get_name())
-    except Exception as e:
-        print("[WARN] フォントキャッシュの再構築に失敗:", str(e))
+    print("[INFO] 日本語フォントを設定:", font_prop.get_name())
 else:
     print("⚠ fonts/ipaexg.ttf が見つかりません。日本語が文字化けする可能性があります。")
 
@@ -83,6 +79,7 @@ def update():
     except Exception as e:
         print("[ERROR] update処理でエラー:", str(e))
         return {"error": str(e)}
+
 
 
 
