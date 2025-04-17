@@ -7,7 +7,7 @@ import math
 import uuid
 
 # === 📌 日本語フォント設定 ===
-font_path = os.path.join('fonts', 'IPAexGothic.ttf'')  # フォントファイルは fonts フォルダ内に配置
+font_path = os.path.join('fonts', 'c.ttf'')  # フォントファイルは fonts フォルダ内に配置
 if os.path.exists(font_path):
     font_prop = fm.FontProperties(fname=font_path)
     matplotlib.rcParams['font.family'] = font_prop.get_name()
